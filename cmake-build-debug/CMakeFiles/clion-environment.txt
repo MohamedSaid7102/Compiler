@@ -1,0 +1,3 @@
+ToolSet: 1.0 (local)Options: 
+
+Options:-DCMAKE_MAKE_PROGRAM=/mnt/cc953536-d832-400a-886b-2734e5b70db1/Apps/JET Brains/CLion/CLion-2022.2.4/clion-2022.2.4/bin/ninja/linux/ninja
