@@ -10,21 +10,30 @@ void lexicalAnalysis(std::string sourceCodeFileName) {
 
     while (!fileHandler.eof()) {
         ch = fileHandler.get();
-
         // in case of newline
         if (ch == '\n' && inSLCState) {
             resetSLCState();
             continue;
         }
 
-        if (inSLCState) continue;
-
-        /* handle 1 line comment first */
-        if (ch == '/') {
-            tempBufferItems[tempBufferItemsPointer++] = ch;
-            handleSLCPossibility();
+        if (ch == '*' || ch == '/') {
+            if (!globalBuffer.empty()) handleBufferContent();
+            handleSLCPossibility(ch);
+            handleMLCPossibility(ch);
             continue;
         }
+
+        if (inSLCState || inMLCState) continue;
+
+        if (!delayedBuffer.empty()) {
+            globalBuffer = delayedBuffer;
+            handleBufferContent();
+            globalBuffer = delayedBuffer = "";
+        }
+
+        // If we still have
+        if (!tempBufferMLC.empty()) tempBufferMLC = "";
+        if (!tempBufferSLC.empty()) tempBufferSLC = "";
 
         if (isHandledAsOperator(ch)) continue;
         if (isHandledAsSpecial(ch)) continue;

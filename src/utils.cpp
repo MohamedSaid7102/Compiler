@@ -42,8 +42,7 @@ bool isHandledAsOperator(char ch) {
 }
 
 bool isHandledAsSpecial(char ch) {
-    handleIfLastStateWasNotComment();
-
+//    handleIfLastStateWasNotComment();
     const int SPECIALS_SIZE=16;
 
     std::string specials[SPECIALS_SIZE] = {"(",")","$","#","@","!","`","\"","\'",".",",","{","}","<",">",";"} ;
@@ -57,8 +56,7 @@ bool isHandledAsSpecial(char ch) {
 }
 
 bool isHandledAsCharOrNumber(char ch) {
-    handleIfLastStateWasNotComment();
-
+//    handleIfLastStateWasNotComment();
     if ((ch>='a' && ch<='z') || (ch>='A' && ch<='Z') || (ch>='0' && ch<='9') || (ch >= 0 && ch <= 9)) {
         globalBuffer += ch;
         return true;

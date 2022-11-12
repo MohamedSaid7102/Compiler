@@ -73,6 +73,12 @@ build CMakeFiles/ShelMaacompiler.dir/src/commentHandling.cpp.o: CXX_COMPILER__Sh
   OBJECT_DIR = CMakeFiles/ShelMaacompiler.dir
   OBJECT_FILE_DIR = CMakeFiles/ShelMaacompiler.dir/src
 
+build CMakeFiles/ShelMaacompiler.dir/main1.cpp.o: CXX_COMPILER__ShelMaacompiler_Debug /mnt/cc953536-d832-400a-886b-2734e5b70db1/Collge/compiler$ design/ShelMaacompiler/main1.cpp || cmake_object_order_depends_target_ShelMaacompiler
+  DEP_FILE = CMakeFiles/ShelMaacompiler.dir/main1.cpp.o.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles/ShelMaacompiler.dir
+  OBJECT_FILE_DIR = CMakeFiles/ShelMaacompiler.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ShelMaacompiler
@@ -81,7 +87,7 @@ build CMakeFiles/ShelMaacompiler.dir/src/commentHandling.cpp.o: CXX_COMPILER__Sh
 #############################################
 # Link the executable ShelMaacompiler
 
-build ShelMaacompiler: CXX_EXECUTABLE_LINKER__ShelMaacompiler_Debug CMakeFiles/ShelMaacompiler.dir/main.cpp.o CMakeFiles/ShelMaacompiler.dir/src/utils.cpp.o CMakeFiles/ShelMaacompiler.dir/src/lexicalAnalysis.cpp.o CMakeFiles/ShelMaacompiler.dir/src/commentHandling.cpp.o
+build ShelMaacompiler: CXX_EXECUTABLE_LINKER__ShelMaacompiler_Debug CMakeFiles/ShelMaacompiler.dir/main.cpp.o CMakeFiles/ShelMaacompiler.dir/src/utils.cpp.o CMakeFiles/ShelMaacompiler.dir/src/lexicalAnalysis.cpp.o CMakeFiles/ShelMaacompiler.dir/src/commentHandling.cpp.o CMakeFiles/ShelMaacompiler.dir/main1.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/ShelMaacompiler.dir
   POST_BUILD = :

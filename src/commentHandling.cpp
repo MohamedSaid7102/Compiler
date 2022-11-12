@@ -1,22 +1,53 @@
 #include "../include/headers.h"
 
 void resetSLCState() {
+    tempBufferSLC = "";
     inSLCState = false;
-    isSLCFirstSlashExists = false;
 }
 
-void handleIfLastStateWasNotComment() {
-    // if we had that first slash, but now we have something other than '/'
-    // or '*', so last slash was a division operator '/'
-    if(isSLCFirstSlashExists) {
-        isHandledAsOperator('/');
+void resetMLCState() {
+    tempBufferMLC = "";
+    inMLCState = false;
+}
+
+void handleSLCPossibility(char ch) {
+    if (ch != '/' || inMLCState) {
         resetSLCState();
+        return;
+    }
+
+    tempBufferSLC += ch;
+
+    if (tempBufferSLC == "//") {
+        inSLCState = true;
+        tempBufferSLC = delayedBuffer = "";
+        resetMLCState();
     }
 }
 
-void handleSLCPossibility() {
-    if (!isSLCFirstSlashExists)
-        isSLCFirstSlashExists = true;
-    else
-        inSLCState = true;
+void handleMLCPossibility(char ch) {
+    if (ch != '/' && ch != '*' || inSLCState) return;
+
+    tempBufferMLC += ch;
+
+    if (tempBufferMLC == "/*") {
+        inMLCState = true;
+        tempBufferMLC = delayedBuffer = "";
+        resetSLCState();
+        return;
+    }
+
+    if (tempBufferMLC == "*/") {
+        resetMLCState();
+        resetSLCState();
+        return;
+    }
+
+    // Otherwise
+    if (!inMLCState)
+        delayedBuffer += ch;
+
+    if (tempBufferMLC.size() > 1)
+        tempBufferMLC = tempBufferMLC.back();
+
 }

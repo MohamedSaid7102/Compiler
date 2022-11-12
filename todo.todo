@@ -1,0 +1,5 @@
+[ ] Handle 1.0 & 2.0 "double number"
+[ ] Handle String input state "hello world" => "hello world": string
+[ ] Handle :: and << and >>
+[ ] Handle int a = 5**//;
+[ ] Print type of operator or or special char
